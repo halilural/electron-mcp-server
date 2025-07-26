@@ -1,4 +1,4 @@
-import { ChildProcess } from "child_process";
+import { ChildProcess } from 'child_process';
 
 // Electron process management state
 export let electronProcess: ChildProcess | null = null;

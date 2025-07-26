@@ -145,6 +145,8 @@ dist_electron/
 test-results/
 coverage/
 .nyc_output/
+test-temp/
+temp/
 
 # Example App
 example-app

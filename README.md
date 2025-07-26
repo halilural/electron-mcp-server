@@ -16,7 +16,63 @@ Transform your Electron development experience with **AI-powered automation**:
 - **⚡ DevTools Protocol Integration**: Universal compatibility with any Electron app - no modifications required
 - **🚀 Development Observability**: Monitor logs, system info, and application behavior seamlessly
 
-## 🚀 Key Features
+## 🔒 Security & Configuration
+
+**Configurable security levels** to balance safety with functionality:
+
+### Security Levels
+
+- **🔒 STRICT**: Maximum security for production environments
+- **⚖️ BALANCED**: Default security with safe UI interactions (recommended)
+- **🔓 PERMISSIVE**: More functionality for trusted environments
+- **🛠️ DEVELOPMENT**: Minimal restrictions for development/testing
+
+### Secure UI Interaction Commands
+
+Instead of raw JavaScript eval, use these secure commands:
+
+```javascript
+// ✅ Secure button clicking
+{
+  "command": "click_by_text",
+  "args": { "text": "Create New Encyclopedia" }
+}
+
+// ✅ Secure element selection
+{
+  "command": "click_by_selector", 
+  "args": { "selector": "button[title='Create']" }
+}
+
+// ✅ Secure keyboard shortcuts
+{
+  "command": "send_keyboard_shortcut",
+  "args": { "text": "Ctrl+N" }
+}
+
+// ✅ Secure navigation
+{
+  "command": "navigate_to_hash",
+  "args": { "text": "create" }
+}
+```
+
+See [SECURITY_CONFIG.md](./SECURITY_CONFIG.md) for detailed security documentation.
+
+## 🛠️ Security Features
+
+**Enterprise-grade security** built for safe AI-powered automation:
+
+- **🔒 Sandboxed Execution**: All code runs in isolated environments with strict resource limits
+- **🔍 Input Validation**: Advanced static analysis detects and blocks dangerous code patterns
+- **📝 Comprehensive Auditing**: Encrypted logs track all operations with full traceability
+- **🖼️ Secure Screenshots**: Encrypted screenshot data with clear user notifications
+- **⚠️ Risk Assessment**: Automatic threat detection with configurable security thresholds
+- **🚫 Zero Trust**: Dangerous functions like `eval`, file system access, and network requests are blocked by default
+
+> **Safety First**: Every command is analyzed, validated, and executed in a secure sandbox before reaching your application.
+
+## �🚀 Key Features
 
 ### 🎮 Application Control & Automation
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export enum LogLevel {
   ERROR = 0,
   WARN = 1,
@@ -20,16 +21,16 @@ export class Logger {
       let level = LogLevel.INFO;
 
       switch (envLevel) {
-        case "ERROR":
+        case 'ERROR':
           level = LogLevel.ERROR;
           break;
-        case "WARN":
+        case 'WARN':
           level = LogLevel.WARN;
           break;
-        case "INFO":
+        case 'INFO':
           level = LogLevel.INFO;
           break;
-        case "DEBUG":
+        case 'DEBUG':
           level = LogLevel.DEBUG;
           break;
       }

@@ -4,14 +4,86 @@
  */
 
 /**
+ * Securely escape text input for JavaScript code generation
+ */
+function escapeJavaScriptString(input: string): string {
+  return JSON.stringify(input);
+}
+
+/**
+ * Validate input parameters for security
+ */
+function validateInputParams(
+  selector: string,
+  value: string,
+  searchText: string,
+): {
+  isValid: boolean;
+  sanitized: { selector: string; value: string; searchText: string };
+  warnings: string[];
+} {
+  const warnings: string[] = [];
+  let sanitizedSelector = selector;
+  let sanitizedValue = value;
+  let sanitizedSearchText = searchText;
+
+  // Validate selector
+  if (selector.includes('javascript:')) warnings.push('Selector contains javascript: protocol');
+  if (selector.includes('<script')) warnings.push('Selector contains script tags');
+  if (selector.length > 500) warnings.push('Selector is unusually long');
+
+  // Validate value
+  if (value.includes('<script')) warnings.push('Value contains script tags');
+  if (value.length > 10000) warnings.push('Value is unusually long');
+
+  // Validate search text
+  if (searchText.includes('<script')) warnings.push('Search text contains script tags');
+  if (searchText.length > 1000) warnings.push('Search text is unusually long');
+
+  // Basic sanitization
+  sanitizedSelector = sanitizedSelector.replace(/javascript:/gi, '').substring(0, 500);
+  sanitizedValue = sanitizedValue.replace(/<script[^>]*>.*?<\/script>/gi, '').substring(0, 10000);
+  sanitizedSearchText = sanitizedSearchText
+    .replace(/<script[^>]*>.*?<\/script>/gi, '')
+    .substring(0, 1000);
+
+  return {
+    isValid: warnings.length === 0,
+    sanitized: {
+      selector: sanitizedSelector,
+      value: sanitizedValue,
+      searchText: sanitizedSearchText,
+    },
+    warnings,
+  };
+}
+
+/**
  * Generate the enhanced fill_input command with React-aware event handling
  */
-export function generateFillInputCommand(selector: string, value: string, searchText: string): string {
+export function generateFillInputCommand(
+  selector: string,
+  value: string,
+  searchText: string,
+): string {
+  // Validate and sanitize inputs
+  const validation = validateInputParams(selector, value, searchText);
+  if (!validation.isValid) {
+    return `(function() { return "Security validation failed: ${validation.warnings.join(
+      ', ',
+    )}"; })()`;
+  }
+
+  // Escape all inputs to prevent injection
+  const escapedSelector = escapeJavaScriptString(validation.sanitized.selector);
+  const escapedValue = escapeJavaScriptString(validation.sanitized.value);
+  const escapedSearchText = escapeJavaScriptString(validation.sanitized.searchText);
+
   return `
     (function() {
-      const selector = '${selector}';
-      const value = '${value}';
-      const searchText = '${searchText}';
+      const selector = ${escapedSelector};
+      const value = ${escapedValue};
+      const searchText = ${escapedSearchText};
       
       // Deep form field analysis
       function analyzeInput(el) {
@@ -325,11 +397,24 @@ export function generateFillInputCommand(selector: string, value: string, search
  * Generate the enhanced select_option command
  */
 export function generateSelectOptionCommand(selector: string, value: string, text: string): string {
+  // Validate and sanitize inputs
+  const validation = validateInputParams(selector, value, text);
+  if (!validation.isValid) {
+    return `(function() { return "Security validation failed: ${validation.warnings.join(
+      ', ',
+    )}"; })()`;
+  }
+
+  // Escape all inputs to prevent injection
+  const escapedSelector = escapeJavaScriptString(validation.sanitized.selector);
+  const escapedValue = escapeJavaScriptString(validation.sanitized.value);
+  const escapedText = escapeJavaScriptString(validation.sanitized.searchText);
+
   return `
     (function() {
-      const selector = '${selector}';
-      const value = '${value}';
-      const text = '${text}';
+      const selector = ${escapedSelector};
+      const value = ${escapedValue};
+      const text = ${escapedText};
       
       let select = null;
       
