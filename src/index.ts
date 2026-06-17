@@ -9,7 +9,7 @@ import { tools } from './tools';
 import { handleToolCall } from './handlers';
 import { logger } from './utils/logger';
 
-config();
+config({ quiet: true });
 
 // Create MCP server instance
 const server = new Server(
