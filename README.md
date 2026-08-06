@@ -1,10 +1,31 @@
 # Electron MCP Server
 
-[![GitHub license](https://img.shields.io/github/license/halilural/electron-mcp-server)](https://github.com/halilural/electron-mcp-server/blob/master/LICENSE)
+[![CI](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml)
+[![Publish to npm](https://github.com/halilural/electron-mcp-server/actions/workflows/publish.yml/badge.svg)](https://github.com/halilural/electron-mcp-server/actions/workflows/publish.yml)
 [![npm version](https://img.shields.io/npm/v/electron-mcp-server)](https://www.npmjs.com/package/electron-mcp-server)
+[![npm downloads](https://img.shields.io/npm/dm/electron-mcp-server)](https://www.npmjs.com/package/electron-mcp-server)
+[![node](https://img.shields.io/node/v/electron-mcp-server)](https://nodejs.org)
+[![GitHub license](https://img.shields.io/github/license/halilural/electron-mcp-server)](https://github.com/halilural/electron-mcp-server/blob/master/LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-blue)](https://modelcontextprotocol.io)
 
-A powerful Model Context Protocol (MCP) server that provides comprehensive Electron application automation, debugging, and observability capabilities. Supercharge your Electron development workflow with AI-powered automation through Chrome DevTools Protocol integration.
+**Control any Electron app with natural language.** An MCP server that lets AI assistants (Claude, Cursor, VS Code, …) drive your Electron app: click buttons, fill forms, take screenshots, read console logs, and run JavaScript inside it — all over the Chrome DevTools Protocol, with no changes to your app.
+
+```bash
+npx -y electron-mcp-server
+```
+
+Then ask your AI: *"Click the Settings button in my Electron app and screenshot the result."*
+
+**Why you might want it**
+
+- 🤖 **AI-driven UI automation** — describe the interaction ("click Submit", "fill the email field"); no selector wrangling
+- 🐛 **Debugging without DevTools** — console logs and page structure pulled straight into the chat
+- 📸 **Screenshots on demand** — returned as image data the AI can actually look at
+- ⚡ **Zero app changes** — attaches over CDP to any Electron app started with `--remote-debugging-port=9222`
+- 🔒 **Security levels** — strict → development, so you choose how much the AI may do
+- 🧪 **Automated E2E flows** — turn manual test steps into repeatable AI-run scenarios
+
+**The 4 tools it exposes:** `get_electron_window_info`, `take_screenshot`, `send_command_to_electron` (UI interaction + `eval`), `read_electron_logs`.
 
 ## Demo
 
@@ -15,16 +36,6 @@ See the Electron MCP Server in action:
 **[🎬 Watch Full Demo on Vimeo](https://vimeo.com/1104937830)**
 
 *Watch how easy it is to automate Electron applications with AI-powered MCP commands.*
-
-## 🎯 What Makes This Special
-
-Transform your Electron development experience with **AI-powered automation**:
-
-- **🔄 Real-time UI Automation**: Click buttons, fill forms, and interact with any Electron app programmatically
-- **📸 Visual Debugging**: Take screenshots and capture application state without interrupting development
-- **🔍 Deep Inspection**: Extract DOM elements, application data, and performance metrics in real-time
-- **⚡ DevTools Protocol Integration**: Universal compatibility with any Electron app - no modifications required
-- **🚀 Development Observability**: Monitor logs, system info, and application behavior seamlessly
 
 ## 🔒 Security & Configuration
 

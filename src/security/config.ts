@@ -120,19 +120,21 @@ export function getSecurityConfig(
  */
 export function getDefaultSecurityLevel(): SecurityLevel {
   const envSecurityLevel = process.env.SECURITY_LEVEL;
-  
+
   if (envSecurityLevel) {
     const normalizedLevel = envSecurityLevel.toLowerCase();
-    
+
     // Check if the provided value is a valid SecurityLevel
     if (Object.values(SecurityLevel).includes(normalizedLevel as SecurityLevel)) {
       logger.info(`Using security level from environment: ${normalizedLevel}`);
       return normalizedLevel as SecurityLevel;
     } else {
-      logger.warn(`Invalid security level in environment variable: ${envSecurityLevel}. Valid values are: ${Object.values(SecurityLevel).join(', ')}. Falling back to BALANCED.`);
+      logger.warn(
+        `Invalid security level in environment variable: ${envSecurityLevel}. Valid values are: ${Object.values(SecurityLevel).join(', ')}. Falling back to BALANCED.`,
+      );
     }
   }
-  
+
   logger.info('Using BALANCED security level (default)');
   return SecurityLevel.BALANCED;
 }
