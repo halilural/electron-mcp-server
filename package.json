@@ -16,6 +16,7 @@
     "watch-and-serve": "webpack --config webpack.config.ts --mode development --watch & node --watch dist/index.js",
     "prepare": "npm run build",
     "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:react": "cd tests/integration/react-compatibility && electron test-react-electron.cjs",
@@ -85,7 +86,7 @@
     "LICENSE"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "repository": {
     "type": "git",

@@ -18,7 +18,7 @@ function generateFallbackKey(): string {
 // Validate and get encryption key with fallback
 function getEncryptionKey(): string {
   const key = process.env.SCREENSHOT_ENCRYPTION_KEY;
-  
+
   if (!key) {
     return generateFallbackKey();
   }
