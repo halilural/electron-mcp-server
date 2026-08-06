@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml)
 [![Publish to npm](https://github.com/halilural/electron-mcp-server/actions/workflows/publish.yml/badge.svg)](https://github.com/halilural/electron-mcp-server/actions/workflows/publish.yml)
-[![npm version](https://img.shields.io/npm/v/electron-mcp-server)](https://www.npmjs.com/package/electron-mcp-server)
-[![npm downloads](https://img.shields.io/npm/dm/electron-mcp-server)](https://www.npmjs.com/package/electron-mcp-server)
-[![node](https://img.shields.io/node/v/electron-mcp-server)](https://nodejs.org)
+[![npm version](https://img.shields.io/npm/v/electron-mcp-server?cacheSeconds=1800)](https://www.npmjs.com/package/electron-mcp-server)
+[![npm downloads](https://img.shields.io/npm/dm/electron-mcp-server?cacheSeconds=1800)](https://www.npmjs.com/package/electron-mcp-server)
+[![node](https://img.shields.io/node/v/electron-mcp-server?cacheSeconds=1800)](https://nodejs.org)
 [![GitHub license](https://img.shields.io/github/license/halilural/electron-mcp-server)](https://github.com/halilural/electron-mcp-server/blob/master/LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-blue)](https://modelcontextprotocol.io)
 
