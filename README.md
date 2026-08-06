@@ -585,7 +585,7 @@ await take_screenshot({
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - TypeScript 4.5+
 - **Electron** - Required for running and testing Electron applications
 
