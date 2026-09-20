@@ -1,3 +1,5 @@
+
+
 # Electron MCP Server
 
 [![CI](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/halilural/electron-mcp-server/actions/workflows/ci.yml)
@@ -646,7 +648,7 @@ The project includes comprehensive test files for React compatibility:
 ```bash
 # Run React compatibility tests
 cd tests/integration/react-compatibility
-electron test-react-electron.js
+electron test-react-electron.cjs
 ```
 
 See [`tests/integration/react-compatibility/README.md`](tests/integration/react-compatibility/README.md) for detailed testing instructions and scenarios.
